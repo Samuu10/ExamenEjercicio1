@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
+//Clase que representa la actividad principal de la aplicación
 public class ActividadPrincipal extends AppCompatActivity implements AdaptadorTarea.OnTareaClickListener {
 
     //Variables
@@ -49,7 +50,6 @@ public class ActividadPrincipal extends AppCompatActivity implements AdaptadorTa
         adapterTarea.notifyDataSetChanged();
     }
 
-
     //Método para mostrar un diálogo para añadir una nueva tarea
     private void mostrarDialogoAñadirTarea() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -58,20 +58,20 @@ public class ActividadPrincipal extends AppCompatActivity implements AdaptadorTa
         EditText editTextTitle = view.findViewById(R.id.añadirTarea);
 
         builder.setView(view)
-                .setTitle("Añadir Tarea")
-                .setNegativeButton("Cancelar", null)
-                .setPositiveButton("Añadir", (dialog, id) -> {
-                String nombreTarea = editTextTitle.getText().toString();
-                if (!nombreTarea.isEmpty()) {
-                        repositorioTarea.agregarTareaPendiente(new Tarea(nombreTarea));
-                        adapterTarea.notifyDataSetChanged();
-                    }
-                });
+            .setTitle("Añadir Tarea")
+            .setNegativeButton("Cancelar", null)
+            .setPositiveButton("Añadir", (dialog, id) -> {
+            String nombreTarea = editTextTitle.getText().toString();
+            if (!nombreTarea.isEmpty()) {
+                    repositorioTarea.agregarTareaPendiente(new Tarea(nombreTarea));
+                    adapterTarea.notifyDataSetChanged();
+                }
+            });
 
         builder.create().show();
     }
 
-    //Método para marcar una tarea como completada o desmarcarla
+    //Método para marcar una tarea como hecha
     @Override
     public void onTareaHecha(int position, boolean isChecked) {
         if (isChecked) {
@@ -89,7 +89,7 @@ public class ActividadPrincipal extends AppCompatActivity implements AdaptadorTa
         }
     }
 
-    //Método para eliminar una tarea pendiente de la lista principal de tareas pendientes
+    //Método para eliminar una tarea de la lista principal de tareas pendientes
     @Override
     public void onTareaEliminada(int position) {
         new AlertDialog.Builder(this)

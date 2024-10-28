@@ -2,10 +2,8 @@ package com.example.examenejercicio1;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,18 +11,17 @@ import java.util.List;
 //Clase RepositorioTarea para gestionar las tareas que sigue un patrón Singleton
 public class RepositorioTarea {
 
-    //Atributos
+    //Variables
     private static RepositorioTarea instancia;
     private List<Tarea> tareasPendientes;
     private List<Tarea> tareasHechas;
-
     private SharedPreferences sharedPreferences;
     private Gson gson;
-
     private static final String PREFS_NAME = "tareas_prefs";
     private static final String KEY_TAREAS_PENDIENTES = "tareas_pendientes";
     private static final String KEY_TAREAS_HECHAS = "tareas_hechas";
 
+    //Constructor privado
     private RepositorioTarea(Context context) {
         tareasPendientes = new ArrayList<>();
         tareasHechas = new ArrayList<>();
