@@ -29,15 +29,17 @@ public class ActividadPrincipal extends AppCompatActivity implements AdaptadorTa
 
         adapterTarea = new AdaptadorTarea(tareasPendientes, this);
 
+        //Configuración del RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recycler_view_tareas_hechas);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapterTarea);
 
+        //Botón para añadir una nueva tarea
         Button btnAgregarTarea = findViewById(R.id.boton_anadir_tarea);
-        Button btnVerTareasHechas = findViewById(R.id.boton_tareas_hechas);
-
         btnAgregarTarea.setOnClickListener(v -> mostrarDialogoAñadirTarea());
 
+        //Botón para ver las tareas hechas
+        Button btnVerTareasHechas = findViewById(R.id.boton_tareas_hechas);
         btnVerTareasHechas.setOnClickListener(v -> {
             Intent intent = new Intent(ActividadPrincipal.this, ActividadTareasHechas.class);
             startActivity(intent);
@@ -52,11 +54,13 @@ public class ActividadPrincipal extends AppCompatActivity implements AdaptadorTa
 
     //Método para mostrar un diálogo para añadir una nueva tarea
     private void mostrarDialogoAñadirTarea() {
+        //Creación del diálogo
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialogo_tarea, null);
         EditText editTextTitle = view.findViewById(R.id.añadirTarea);
 
+        //Configuración del diálogo
         builder.setView(view)
             .setTitle("Añadir Tarea")
             .setNegativeButton("Cancelar", null)

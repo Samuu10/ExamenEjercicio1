@@ -58,6 +58,12 @@ public class RepositorioTarea {
         guardarTareas();
     }
 
+    //Método para eliminar una tarea pendiente de la lista principal de tareas pendientes
+    public void eliminarTareaPendiente(int position) {
+        tareasPendientes.remove(position);
+        guardarTareas();
+    }
+
     //Método para marcar una tarea como hecha y moverla a la lista de tareas hechas
     public void marcarTareaHecha(int position) {
         Tarea tarea = tareasPendientes.remove(position);
@@ -77,12 +83,6 @@ public class RepositorioTarea {
     //Método para eliminar una tarea hecha de la lista de tareas hechas
     public void eliminarTareaHecha(int position) {
         tareasHechas.remove(position);
-        guardarTareas();
-    }
-
-    //Método para eliminar una tarea pendiente de la lista principal de tareas pendientes
-    public void eliminarTareaPendiente(int position) {
-        tareasPendientes.remove(position);
         guardarTareas();
     }
 

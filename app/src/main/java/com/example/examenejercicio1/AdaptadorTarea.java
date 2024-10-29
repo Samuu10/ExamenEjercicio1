@@ -53,7 +53,7 @@ public class AdaptadorTarea extends RecyclerView.Adapter<AdaptadorTarea.TareaVie
         return tareas.size();
     }
 
-    //Clase TareaViewHolder para representar los elementos de la vista
+    //Clase estática TareaViewHolder para representar los elementos de la vista
     public static class TareaViewHolder extends RecyclerView.ViewHolder {
         TextView tvNombreTarea;
         CheckBox cbHecha;

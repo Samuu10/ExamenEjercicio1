@@ -25,10 +25,12 @@ public class ActividadTareasHechas extends AppCompatActivity implements Adaptado
 
         adapterTarea = new AdaptadorTarea(tareasHechas, this);
 
+        //Configuración del RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recycler_view_tareas_hechas);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapterTarea);
 
+        //Botón para volver a la actividad principal de tareas pendientes
         Button btnVolver = findViewById(R.id.boton_volver);
         btnVolver.setOnClickListener(v -> finish());
     }
@@ -39,7 +41,7 @@ public class ActividadTareasHechas extends AppCompatActivity implements Adaptado
         if (!isChecked) {
             new AlertDialog.Builder(this)
                 .setTitle("Confirmar")
-                .setMessage("¿Estás seguro de que quieres desmarcar esta tarea?")
+                .setMessage("¿Estás seguro de que quieres desmarcar esta tarea como completada?")
                 .setPositiveButton("Confirmar", (dialog, which) -> {
                     repositorioTarea.desmarcarTareaHecha(position);
                     adapterTarea.notifyDataSetChanged();
